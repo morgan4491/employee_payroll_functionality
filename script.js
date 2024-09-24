@@ -2,32 +2,37 @@
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
-let firstName = '';
-let lastName = '';
-let salary;
-let addAnotherEmployee = true;
-let employeesArray = [];
+// let firstName = '';
+// let lastName = '';
+// let salary;
+const employeesArray = [];
 
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
 
-  employeesArray = [];
+  let firstName;
+  let lastName;
+  let salary;
+  let addAnotherEmployee = true;
+  // employeesArray = [];
   
 
   while (addAnotherEmployee) {
+
     firstName = prompt('Enter first name');
     lastName = prompt('Enter last name');
-    let salary;
 
-    while (true) {
+    let validSalary = false;
+    while (!validSalary) {    // Using !validSalary here makes the while loop 'true'
+
       const notANumber = ['firstName: "John", lastName: "Smith", salary: 12345'];
       salary = prompt('Enter salary');
       if (!isNaN(salary)) {
         salary = parseFloat(salary);
-        break;
+        validSalary = true;   // setting validSalary = true here ends this inner 'if' conditional loop (does not need to continue onto the 'else' statement)
       }
       else {
-        return alert(notANumber);
+        alert(notANumber);
       }
     };
 
@@ -47,16 +52,20 @@ const collectEmployees = function () {
 
 // Display the average salary
 
-let totalSalary;
-let numberOfEmployees;
-let averageSalary;
+// let totalSalary;
+// let numberOfEmployees;
+// let averageSalary;
 
-const displayAverageSalary = function (employeesArray) {
+const displayAverageSalary = function (employeesArray) {  // 'employeesArray' is a new parameter that holds the value of the const collectEmployees, which is equal to the const employeesArray (defined on line 8)
   // TODO: Calculate and display the average salary
-  totalSalary = 0;
+  let totalSalary = 0;
   numberOfEmployees = employeesArray.length;
-  for (let index = 0; index < numberOfEmployees; index++) {
-    totalSalary += employeesArray[index].salary;
+  // for (let index = 0; index < numberOfEmployees; index++) {
+  //   totalSalary += employeesArray[index].salary;
+  // }
+
+  for (let employee of employeesArray) {  // here we define the the for-of loop. In this case, we are asking the newly defined variable 'employee' to loop over the 'employeesArray' (array full of objects)
+    totalSalary += employee.salary;       // More specifically, we are now asking the loop to create a new variable 'totalSalary' and set it equal to all of the salaries within the 'employee' array
   }
 
   let averageSalary = totalSalary / numberOfEmployees;
