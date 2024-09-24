@@ -12,7 +12,7 @@ const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
 
   employeesArray = [];
-  const notANumber = ['firstName:"John"', 'lastName:"Smith"', 'salary: 12345'];
+  
 
   while (addAnotherEmployee) {
     firstName = prompt('Enter first name');
@@ -20,6 +20,7 @@ const collectEmployees = function () {
     let salary;
 
     while (true) {
+      const notANumber = ['firstName: "John", lastName: "Smith", salary: 12345'];
       salary = prompt('Enter salary');
       if (!isNaN(salary)) {
         salary = parseFloat(salary);
@@ -67,6 +68,12 @@ const displayAverageSalary = function (employeesArray) {
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
+
+  const randomNumber = Math.random();
+  const rangeNum = randomNumber * employeesArray.length;
+  const index = Math.floor(rangeNum);
+
+  console.log(employeesArray[index]);
 };
 
 /*
