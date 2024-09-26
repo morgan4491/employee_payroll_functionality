@@ -59,33 +59,14 @@ const collectEmployees = function () {
 const displayAverageSalary = function (employeesArray) {  // 'employeesArray' is a new parameter that holds the value of the const collectEmployees, which is equal to the const employeesArray (defined on line 8)
   // TODO: Calculate and display the average salary
   let totalSalary = 0;
-  let totalSalary1 = 0;
-  let hasDecimal = false;
   const numberOfEmployees = employeesArray.length;
 
   for (let employee of employeesArray) {
-    if (Number.isInteger(employee.salary)) {
-      totalSalary += employee.salary;
-      console.log('your salaries have no decimals');
-    } else {
-      let employee1 = employee;
-      totalSalary1 += employee1.salary;
-      console.log('your salaries have decimals');
-    }
+    totalSalary += employee.salary;
   }
 
-  if (!hasDecimal) {
-    let averageSalary = totalSalary / numberOfEmployees;
-    let averageSalaryWithTwoDecimals = parseFloat(averageSalary.toFixed(2));
-
-    console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
-
-  } else {
-    let averageSalary = totalSalary1 / numberOfEmployees;
-    let averageSalaryWithTwoDecimals = parseFloat(averageSalary.toFixed(2));
-
-    console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
-  }
+  const averageSalary = (totalSalary / numberOfEmployees).toFixed(2);
+  console.log(`The average employee salary between our${numberOfEmployees} employee(s) is $${averageSalary}.`);
   
 
 };
