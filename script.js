@@ -59,26 +59,34 @@ const collectEmployees = function () {
 const displayAverageSalary = function (employeesArray) {  // 'employeesArray' is a new parameter that holds the value of the const collectEmployees, which is equal to the const employeesArray (defined on line 8)
   // TODO: Calculate and display the average salary
   let totalSalary = 0;
-  numberOfEmployees = employeesArray.length;
-  // for (let index = 0; index < numberOfEmployees; index++) {
-  //   totalSalary += employeesArray[index].salary;
-  // }
+  let totalSalary1 = 0;
+  let hasDecimal = false;
+  const numberOfEmployees = employeesArray.length;
 
-  for (let employee of employeesArray) {  // here we define the the for-of loop. In this case, we are asking the newly defined variable 'employee' to loop over the 'employeesArray' (array full of objects)
-    totalSalary += employee.salary;       // More specifically, we are now asking the loop to create a new variable 'totalSalary' and set it equal to all of the salaries within the 'employee' array
-  };
+  for (let employee of employeesArray) {
+    if (Number.isInteger(employee.salary)) {
+      totalSalary += employee.salary;
+      console.log('your salaries have no decimals');
+    } else {
+      let employee1 = employee;
+      totalSalary1 += employee1.salary;
+      console.log('your salaries have decimals');
+    }
+  }
 
-  if (Number.isInteger(totalSalary)) {
+  if (!hasDecimal) {
     let averageSalary = totalSalary / numberOfEmployees;
-    averageSalaryWithTwoDecimals = averageSalary.toFixed(2);
+    let averageSalaryWithTwoDecimals = parseFloat(averageSalary.toFixed(2));
 
     console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
+
   } else {
-    let averageSalary = totalSalary / numberOfEmployees;
-    averageSalaryWithTwoDecimals = averageSalary.toFixed(2);
+    let averageSalary = totalSalary1 / numberOfEmployees;
+    let averageSalaryWithTwoDecimals = parseFloat(averageSalary.toFixed(2));
 
     console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
-  };
+  }
+  
 
 };
 
