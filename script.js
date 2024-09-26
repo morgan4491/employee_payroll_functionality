@@ -5,11 +5,11 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // let firstName = '';
 // let lastName = '';
 // let salary;
-const employeesArray = [];
+// const employeesArray = [];
 
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
-
+  const employeesArray = [];
   let firstName;
   let lastName;
   let salary;
@@ -45,7 +45,7 @@ const collectEmployees = function () {
     employeesArray.push(employee);
 
     addAnotherEmployee = confirm('Would you like to add another employee?');
-  }
+  };
 
   return employeesArray;
 };
@@ -68,9 +68,17 @@ const displayAverageSalary = function (employeesArray) {  // 'employeesArray' is
     totalSalary += employee.salary;       // More specifically, we are now asking the loop to create a new variable 'totalSalary' and set it equal to all of the salaries within the 'employee' array
   };
 
-  let averageSalary = totalSalary / numberOfEmployees;
+  if (Number.isInteger(totalSalary)) {
+    let averageSalary = totalSalary / numberOfEmployees;
+    averageSalaryWithTwoDecimals = averageSalary.toFixed(2);
 
-  console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalary}.`);
+    console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
+  } else {
+    let averageSalary = totalSalary / numberOfEmployees;
+    averageSalaryWithTwoDecimals = averageSalary.toFixed(2);
+
+    console.log(`The average employee salary between our ${numberOfEmployees} employee(s) is $${averageSalaryWithTwoDecimals}.`);
+  };
 
 };
 
