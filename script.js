@@ -66,7 +66,7 @@ const displayAverageSalary = function (employeesArray) {  // 'employeesArray' is
 
   for (let employee of employeesArray) {  // here we define the the for-of loop. In this case, we are asking the newly defined variable 'employee' to loop over the 'employeesArray' (array full of objects)
     totalSalary += employee.salary;       // More specifically, we are now asking the loop to create a new variable 'totalSalary' and set it equal to all of the salaries within the 'employee' array
-  }
+  };
 
   let averageSalary = totalSalary / numberOfEmployees;
 
@@ -80,9 +80,11 @@ const getRandomEmployee = function (employeesArray) {
 
   const randomNumber = Math.random();
   const rangeNum = randomNumber * employeesArray.length;
-  const index = Math.floor(rangeNum);
+  let index = Math.floor(rangeNum);
+  let selectedEmployee = employeesArray[index];
+  let fullName = `${selectedEmployee.firstName} ${selectedEmployee.lastName}`;
 
-  console.log(employeesArray[index]);
+  console.log(`Congratulations to ${fullName}, our random drawing winner!`);
 };
 
 /*
